@@ -35,7 +35,7 @@ export default function Footer() {
                 </a>
                 <a
                     className={linkStyle}
-                    href="https://linkedin.com/haarolean"
+                    href="https://linkedin.com/in/haarolean/"
                     target="_blank"
                     rel="noreferrer"
                 >
