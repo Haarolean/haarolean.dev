@@ -1,0 +1,67 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "prettier",
+    "react-hooks",
+    "react-refresh"
+  ],
+  "ignorePatterns": [
+    "dist",
+    ".eslintrc.json"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      4
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "prettier/prettier": "warn",
+    "@typescript-eslint/no-explicit-any": "error",
+    "no-debugger": "error",
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react-refresh/only-export-components": [
+      "warn",
+      {
+        "allowConstantExport": true
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": "warn"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
