@@ -6,7 +6,13 @@ import { siLinkedin } from "simple-icons"
 
 export default function Footer() {
     const linkStyle =
-        "text-l m-3 p-2 lowercase text-neutral hover:cursor-pointer hover:text-primary hover:link group"
+        "flex items-center " +
+        "text-xs lg:text-lg " +
+        "m-1 lg:m-3 " +
+        "p-1 lg:p-2 " +
+        "lowercase text-neutral " +
+        "hover:cursor-pointer hover:text-primary hover:link " +
+        "group block"
 
     const discord = () => {
         alert("It's 'Haarolean' just like anywhere else, duh")
@@ -22,7 +28,7 @@ export default function Footer() {
                     rel="noreferrer"
                 >
                     <Icon path={siGithub.path} />
-                    github
+                    <span className="hidden lg:block">github</span>
                 </a>
                 <a
                     className={linkStyle}
@@ -31,7 +37,7 @@ export default function Footer() {
                     rel="noreferrer"
                 >
                     <Icon path={siTwitter.path} />
-                    twitter
+                    <span className="hidden lg:block">twitter</span>
                 </a>
                 <a
                     className={linkStyle}
@@ -40,7 +46,7 @@ export default function Footer() {
                     rel="noreferrer"
                 >
                     <Icon path={siLinkedin.path} />
-                    linkedin
+                    <span className="hidden lg:block">linkedin</span>
                 </a>
                 <a
                     className={linkStyle}
@@ -49,11 +55,11 @@ export default function Footer() {
                     rel="noreferrer"
                 >
                     <Icon path={siInstagram.path} />
-                    instagram
+                    <span className="hidden lg:block">instagram</span>
                 </a>
                 <a className={linkStyle} onClick={discord}>
                     <Icon path={siDiscord.path} />
-                    discord
+                    <span className="hidden lg:block">discord</span>
                 </a>
             </footer>
         </>
@@ -64,7 +70,10 @@ function Icon(props: { path: string }) {
     return (
         <svg
             viewBox="0 0 24 24"
-            className="mr-2 inline-block h-3 w-3 fill-current text-transparent group-hover:text-primary"
+            className="inline-block 
+            h-6 w-6 
+            fill-current text-neutral hover:text-primary
+            lg:mr-2 lg:h-3 lg:w-3 lg:text-transparent lg:group-hover:text-primary"
         >
             <path d={props.path} />
         </svg>
