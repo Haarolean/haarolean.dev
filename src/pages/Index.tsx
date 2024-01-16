@@ -1,5 +1,7 @@
 import NyanBackground from "../components/NyanBackground.tsx"
 import Footer from "../components/Footer.tsx"
+import ShortcutHome from "../components/CmdShortcut.tsx"
+import React from "react"
 
 export default function Index() {
     return (
@@ -22,7 +24,9 @@ export default function Index() {
                             <p className="leading-loose text-neutral">
                                 Making the world better with software
                             </p>
-                            <div className="mt-2">{/*<ShortcutHome />*/}</div>
+                            <div className="mt-2">
+                                {/*<ShortcutHome />*/}
+                            </div>
                         </div>
                     </div>
                 </main>

@@ -1,14 +1,12 @@
-import Index from "./pages/Index.tsx"
-import { KBarProvider } from "kbar"
+import React from "react"
+import AppRouter from "./components/AppRouter.tsx"
 import NyanConsole from "./components/NyanConsole.tsx"
 
 function App() {
     return (
         <>
-            <KBarProvider>
-                <NyanConsole />
-                <Index />
-            </KBarProvider>
+            <NyanConsole />
+            <AppRouter />
         </>
     )
 }
