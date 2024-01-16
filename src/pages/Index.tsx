@@ -1,6 +1,5 @@
 import NyanBackground from "../components/NyanBackground.tsx"
 import Footer from "../components/Footer.tsx"
-import React from "react"
 
 export default function Index() {
     return (

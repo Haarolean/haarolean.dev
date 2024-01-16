@@ -4,7 +4,6 @@ import KBarButton from "./KBarButton.tsx"
 import Kbd from "./Kbd.tsx"
 
 export default function ShortcutHome() {
-    const { query } = useKBar()
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
@@ -16,19 +15,17 @@ export default function ShortcutHome() {
         const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent)
 
         if (isMobile) {
-            return (
-                <KBarButton onClick={query.toggle}>Tap to start →</KBarButton>
-            )
+            return <KBarButton>Tap for commands →</KBarButton>
         } else if (isMac) {
             return (
-                <KBarButton onClick={query.toggle}>
-                    Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> to start →
+                <KBarButton>
+                    Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> for commands →
                 </KBarButton>
             )
         } else {
             return (
-                <KBarButton onClick={query.toggle}>
-                    Press <Kbd>ctrl</Kbd> <Kbd>K</Kbd> to start →
+                <KBarButton>
+                    Press <Kbd>ctrl</Kbd> <Kbd>K</Kbd> for commands →
                 </KBarButton>
             )
         }
