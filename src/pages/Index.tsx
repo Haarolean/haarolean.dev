@@ -1,14 +1,15 @@
 import NyanBackground from "../components/NyanBackground.tsx"
 import Footer from "../components/Footer.tsx"
-import ShortcutHome from "../components/CmdShortcut.tsx"
 import React from "react"
+import NavBar from "../components/NavBar.tsx"
+import ShortcutHome from "../components/CmdShortcut.tsx";
 
 export default function Index() {
     return (
         <>
             <NyanBackground />
             <div className="flex h-screen min-h-screen flex-col">
-                {/*<NavBar />*/}
+                <NavBar />
                 <main className="mx-auto flex h-full w-full flex-1 items-center justify-center">
                     <div className="flex w-full p-8 lg:mx-96 lg:p-0">
                         <div className="w-96 flex-1">
@@ -24,9 +25,7 @@ export default function Index() {
                             <p className="leading-loose text-neutral">
                                 Making the world better with software
                             </p>
-                            <div className="mt-2">
-                                {/*<ShortcutHome />*/}
-                            </div>
+                            <div className="mt-2"><ShortcutHome /></div>
                         </div>
                     </div>
                 </main>
