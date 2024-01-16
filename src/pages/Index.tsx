@@ -1,12 +1,15 @@
 import NyanBackground from "../components/NyanBackground.tsx"
 import Footer from "../components/Footer.tsx"
+import React from "react"
+import NavBar from "../components/NavBar.tsx"
+import ShortcutHome from "../components/CmdShortcut.tsx";
 
 export default function Index() {
     return (
         <>
             <NyanBackground />
             <div className="flex h-screen min-h-screen flex-col">
-                {/*<NavBar />*/}
+                <NavBar />
                 <main className="mx-auto flex w-full flex-1 items-center justify-center overflow-hidden">
                     <div className="flex w-full p-8 lg:mx-96 lg:p-0">
                         <div className="w-96 flex-1">
@@ -33,7 +36,7 @@ export default function Index() {
                                     %CURRENT_LOCATION%
                                 </p>
                             </span>
-                            <div className="mt-2">{/*<ShortcutHome />*/}</div>
+                            <div className="mt-2"><ShortcutHome /></div>
                         </div>
                     </div>
                 </main>
