@@ -16,11 +16,11 @@ export default function Index() {
                             <p>
                                 <strong className="font-medium leading-loose">
                                     Digital nomad, software developer, engineer
-                                    and cat enthusiast.
+                                    and cat enthusiast
                                 </strong>
                             </p>
                             <p className="leading-loose text-neutral">
-                                Making the world better with software
+                                Making the world a better place with software
                             </p>
                             <div className="mt-2">{/*<ShortcutHome />*/}</div>
                         </div>
