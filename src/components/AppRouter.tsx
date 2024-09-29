@@ -2,6 +2,7 @@ import React from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Index from "../pages/Index.tsx"
 import KBarWrapper from "./kbar/KBarWrapper.tsx"
+import Uses from "../pages/Uses.tsx";
 
 export default function AppRouter() {
     return (
@@ -9,6 +10,7 @@ export default function AppRouter() {
             <KBarWrapper>
                 <Routes>
                     <Route path="/" element={<Index />} />
+                    <Route path="/uses" element={<Uses />} />
                     {/*<Route path="/404" element={<FourOFour />} />*/}
                 </Routes>
             </KBarWrapper>
