@@ -7,11 +7,12 @@ export default function NavBar() {
         "About",
         "Projects",
         "Articles",
-        "Talks",
-        "Podcasts",
-        "Investing",
+        "CV",
+        // "Talks",
+        // "Podcasts",
+        // "Investing",
         "Uses",
-        "Reminder",
+        // "Reminder",
     ]
 
     const [hovered, setHovered] = useState<string>("")
