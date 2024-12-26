@@ -19,7 +19,6 @@ export default function NavBar() {
                     >
                         <span>Title</span>
                     </a>
-
                 </nav>
                 {/*<CmdShortcut />*/}
             </header>

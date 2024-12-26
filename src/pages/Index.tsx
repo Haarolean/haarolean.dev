@@ -20,7 +20,7 @@ export default function Index() {
                                 </strong>
                             </p>
                             <p className="leading-loose text-neutral">
-                                Making the world a better place with software
+                                Making the world a better place through software
                             </p>
                             <span className="flex">
                                 📍
