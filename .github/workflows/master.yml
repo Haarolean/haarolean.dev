@@ -2,7 +2,9 @@ name: Deploy to Pages
 
 on:
   push:
-    branches: ['master', 'main']
+    branches: [ 'main' ]
+  schedule:
+    - cron: '0 0 * * *'  # daily at midnight UTC
   workflow_dispatch:
 
 permissions:
@@ -15,29 +17,78 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.determine.outputs.should_run }}
+      current_location: ${{ steps.fetch_location.outputs.current_location }}
+    steps:
+      - name: Fetch current location data
+        id: fetch_location
+        env:
+          NOMADLIST_API_KEY: ${{ secrets.NOMADLIST_TOKEN }}
+        run: |
+          LOCATION_DATA=$(curl -s "https://nomads.com/@haarolean.json?key=$NOMADLIST_API_KEY")
+          CURRENT_LOCATION=$(echo "$LOCATION_DATA" | jq -r '.location.now | "\(.city), \(.country)"')
+          DATE_START=$(echo "$LOCATION_DATA" | jq -r '.location.now.date_start')
+          echo "current_location=$CURRENT_LOCATION" >> $GITHUB_OUTPUT
+          echo "date_start=$DATE_START" >> $GITHUB_OUTPUT
+
+      - name: Determine whether to proceed
+        id: determine
+        run: |
+          TODAY=$(date +"%Y-%m-%d" -u)
+          DATE_START="${{ steps.fetch_location.outputs.date_start }}"
+          EVENT="${{ github.event_name }}"
+          echo "Today's date: $TODAY"
+          echo "Location change date: $DATE_START"
+          echo "Event: $EVENT"
+
+          # Decide whether to proceed based on the event and date
+          if [ "$EVENT" = "push" ] || [ "$EVENT" = "workflow_dispatch" ]; then
+            echo "should_run=true" >> $GITHUB_OUTPUT
+          elif [ "$DATE_START" = "$TODAY" ]; then
+            echo "should_run=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_run=false" >> $GITHUB_OUTPUT
+          fi
+
   deploy:
+    needs: check
+    if: needs.check.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'npm'
+
       - name: Install dependencies
         run: npm install
+
+      - name: Replace location placeholder
+        run: |
+          FILE="src/pages/Index.tsx"
+          sed -i "s|%CURRENT_LOCATION%|${{ needs.check.outputs.current_location }}|g" "$FILE"
+
       - name: Build
         run: npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4

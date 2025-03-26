@@ -23,8 +23,17 @@ export default function Index() {
                                 </strong>
                             </p>
                             <p className="leading-loose text-neutral">
-                                Making the world a better place with software
+                                Making the world a better place through software
                             </p>
+                            <span className="flex">
+                                📍
+                                <p
+                                    className="tooltip tooltip-bottom underline decoration-dotted hover:cursor-help"
+                                    data-tip="Location is updated daily via NomadList API"
+                                >
+                                    %CURRENT_LOCATION%
+                                </p>
+                            </span>
                             <div className="mt-2"><ShortcutHome /></div>
                         </div>
                     </div>
