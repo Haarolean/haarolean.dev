@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useKBar } from "kbar"
 import KBarButton from "./KBarButton.tsx"
 import Kbd from "./Kbd.tsx"
 
@@ -15,17 +14,17 @@ export default function ShortcutHome() {
         const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent)
 
         if (isMobile) {
-            return <KBarButton>Tap for commands →</KBarButton>
+            return <KBarButton>Tap for command palette →</KBarButton>
         } else if (isMac) {
             return (
                 <KBarButton>
-                    Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> for commands →
+                    Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> for command palette →
                 </KBarButton>
             )
         } else {
             return (
                 <KBarButton>
-                    Press <Kbd>ctrl</Kbd> <Kbd>K</Kbd> for commands →
+                    Press <Kbd>ctrl</Kbd> <Kbd>K</Kbd> for command palette →
                 </KBarButton>
             )
         }

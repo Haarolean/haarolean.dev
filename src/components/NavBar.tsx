@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react";
+import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import clsx from "clsx"
 
 export default function NavBar() {
     const pages = [
@@ -19,7 +20,7 @@ export default function NavBar() {
     const location = useLocation()
 
     return (
-        <header style={Header}>
+        <header style={Header} className="mt-1">
             {/*<Link href="/" passHref>
           <ButtonLogo as="a">z</ButtonLogo>
         </Link>*/}
@@ -40,14 +41,11 @@ export default function NavBar() {
                                 >
                                     <motion.span
                                         // style={NavContainer}
-                                        className={`${
-                                            location.pathname == path
-                                                ? "text-primary after:opacity-100"
-                                                : ""
-                                        } text-secondary hover:text-primary
-                                        
-                                        nav-container
-                                        `}
+                                        className={clsx(
+                                            location.pathname == path &&
+                                                "text-primary after:opacity-100",
+                                            "nav-container text-neutral hover:text-primary"
+                                        )}
                                         onHoverStart={() => setHovered(page)}
                                         onHoverEnd={() => setHovered("")}
                                     >
@@ -56,7 +54,9 @@ export default function NavBar() {
                                                 style={NavHovered}
                                                 className="bg-neutral"
                                                 layoutId="nav"
-                                                animate={{ opacity: 1 }}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 0.25 }}
+                                                exit={{ opacity: 0 }}
                                             />
                                         )}
                                         {page}
@@ -82,7 +82,7 @@ const Header: React.CSSProperties = {
     position: "absolute",
     top: "0",
     // zIndex: 3,
-    marginTop: "13px",
+    // marginTop: "13px",
     // "@bp2": { marginTop: "0" },
 }
 
