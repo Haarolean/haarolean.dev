@@ -25,7 +25,8 @@ export default function Index() {
                             <span className="flex">
                                 📍
                                 <p
-                                    className="tooltip tooltip-bottom underline decoration-dotted hover:cursor-help"
+                                    className="tooltip tooltip-right underline decoration-dotted 
+                                    md:tooltip-bottom hover:cursor-help"
                                     data-tip="Location is updated daily via NomadList API"
                                 >
                                     %CURRENT_LOCATION%
