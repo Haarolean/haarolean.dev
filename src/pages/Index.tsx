@@ -1,5 +1,6 @@
 import NyanBackground from "../components/NyanBackground.tsx"
 import Footer from "../components/Footer.tsx"
+import React from "react"
 
 export default function Index() {
     return (
@@ -20,14 +21,15 @@ export default function Index() {
                                 </strong>
                             </p>
                             <p className="leading-loose text-neutral">
-                                Making the world a better place through software
+                                Small software, slightly better world
                             </p>
                             <span className="flex">
                                 📍
                                 <p
-                                    className="tooltip tooltip-right underline decoration-dotted 
-                                    md:tooltip-bottom hover:cursor-help"
-                                    data-tip="Location is updated daily via NomadList API"
+                                    className="tooltip tooltip-bottom
+                                    border-b border-dotted border-current border-opacity-40
+                                     transition hover:cursor-help hover:opacity-70"
+                                    data-tip="Today’s location, tomorrow’s memory. Updated daily."
                                 >
                                     %CURRENT_LOCATION%
                                 </p>
