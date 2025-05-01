@@ -12,7 +12,7 @@ export default function NavBar() {
         // "Talks",
         // "Podcasts",
         // "Investing",
-        "Uses",
+        "Stuff",
         // "Reminder",
     ]
 
