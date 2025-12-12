@@ -24,9 +24,7 @@ export default function Index() {
                                 Small software, slightly better world
                             </p>
                             <span className="inline-flex items-center gap-1">
-                                <span className="inline-block flex-shrink-0">
-                                    📍
-                                </span>
+                                <span className="flex-shrink-0">📍</span>
                                 <p
                                     className="tooltip tooltip-bottom
                                     min-w-0 truncate border-b border-dotted
