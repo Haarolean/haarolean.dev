@@ -52,11 +52,8 @@ export default function NavBar() {
                                         {isHovered && (
                                             <motion.span
                                                 style={NavHovered}
-                                                className="bg-neutral"
+                                                className="bg-neutral/25"
                                                 layoutId="nav"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 0.25 }}
-                                                exit={{ opacity: 0 }}
                                             />
                                         )}
                                         {page}
