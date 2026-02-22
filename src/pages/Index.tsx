@@ -1,5 +1,6 @@
 import NyanBackground from "../components/NyanBackground.tsx"
 import Footer from "../components/Footer.tsx"
+import LiveClock from "../components/LiveClock.tsx"
 import React from "react"
 
 export default function Index() {
@@ -23,16 +24,23 @@ export default function Index() {
                             <p className="leading-loose text-neutral">
                                 Small software, slightly better world
                             </p>
-                            <span className="flex">
-                                📍
-                                <p
-                                    className="tooltip tooltip-bottom
-                                    border-b border-dotted border-current border-opacity-40
-                                     transition hover:cursor-help hover:opacity-70"
-                                    data-tip="Today’s location, tomorrow’s memory. Updated daily."
-                                >
-                                    %CURRENT_LOCATION%
-                                </p>
+                            <span className="flex items-baseline gap-2">
+                                <span className="flex items-baseline gap-1">
+                                    📍
+                                    <p
+                                        className="tooltip tooltip-bottom
+                                         transition hover:cursor-help hover:opacity-70"
+                                        data-tip="Today's location, tomorrow's memory. Updated daily."
+                                    >
+                                        {import.meta.env.VITE_CURRENT_LOCATION}
+                                    </p>
+                                </span>
+                                <span className="text-neutral">·</span>
+                                <LiveClock
+                                    timezone={
+                                        import.meta.env.VITE_CURRENT_TIMEZONE
+                                    }
+                                />
                             </span>
                             <div className="mt-2">{/*<ShortcutHome />*/}</div>
                         </div>

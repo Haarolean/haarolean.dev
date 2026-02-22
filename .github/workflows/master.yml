@@ -22,6 +22,7 @@ jobs:
     outputs:
       should_run: ${{ steps.determine.outputs.should_run }}
       current_location: ${{ steps.fetch_location.outputs.current_location }}
+      current_timezone: ${{ steps.fetch_location.outputs.current_timezone }}
     steps:
       - name: Fetch current location data
         id: fetch_location
@@ -31,7 +32,11 @@ jobs:
           LOCATION_DATA=$(curl -s "https://nomads.com/@haarolean.json?key=$NOMADLIST_API_KEY")
           CURRENT_LOCATION=$(echo "$LOCATION_DATA" | jq -r '.location.now | "\(.city), \(.country)"')
           DATE_START=$(echo "$LOCATION_DATA" | jq -r '.location.now.date_start')
+          LAT=$(echo "$LOCATION_DATA" | jq -r '.location.now.latitude')
+          LNG=$(echo "$LOCATION_DATA" | jq -r '.location.now.longitude')
+          CURRENT_TIMEZONE=$(curl -s "https://timeapi.io/api/timezone/coordinate?latitude=$LAT&longitude=$LNG" | jq -r '.timeZone // "UTC"')
           echo "current_location=$CURRENT_LOCATION" >> $GITHUB_OUTPUT
+          echo "current_timezone=$CURRENT_TIMEZONE" >> $GITHUB_OUTPUT
           echo "date_start=$DATE_START" >> $GITHUB_OUTPUT
 
       - name: Determine whether to proceed
@@ -73,12 +78,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Replace location placeholder
-        run: |
-          FILE="src/pages/Index.tsx"
-          sed -i "s|%CURRENT_LOCATION%|${{ needs.check.outputs.current_location }}|g" "$FILE"
-
       - name: Build
+        env:
+          VITE_CURRENT_LOCATION: ${{ needs.check.outputs.current_location }}
+          VITE_CURRENT_TIMEZONE: ${{ needs.check.outputs.current_timezone }}
         run: npm run build
 
       - name: Setup Pages
