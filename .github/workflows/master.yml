@@ -30,7 +30,7 @@ jobs:
           NOMADLIST_API_KEY: ${{ secrets.NOMADLIST_TOKEN }}
         run: |
           LOCATION_DATA=$(curl -s "https://nomads.com/@haarolean.json?key=$NOMADLIST_API_KEY")
-          CURRENT_LOCATION=$(echo "$LOCATION_DATA" | jq -r '.location.now | "\(.city), \(.country)"')
+          CURRENT_LOCATION=$(echo "$LOCATION_DATA" | jq -r '.location.now | if .state then "\(.city), \(.state), \(.country)" else "\(.city), \(.country)" end')
           DATE_START=$(echo "$LOCATION_DATA" | jq -r '.location.now.date_start')
           LAT=$(echo "$LOCATION_DATA" | jq -r '.location.now.latitude')
           LNG=$(echo "$LOCATION_DATA" | jq -r '.location.now.longitude')
