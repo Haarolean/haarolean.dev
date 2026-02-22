@@ -14,7 +14,9 @@ export default function ShortcutHome() {
         const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent)
 
         if (isMobile) {
-            return <CommandMenuButton>Tap for command palette →</CommandMenuButton>
+            return (
+                <CommandMenuButton>Tap for command palette →</CommandMenuButton>
+            )
         } else if (isMac) {
             return (
                 <CommandMenuButton>

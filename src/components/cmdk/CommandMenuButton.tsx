@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from "react"
-import { useCommandMenu } from "./CommandMenu"
+import { useCommandMenu } from "./CommandMenuContext"
 
 interface CommandMenuButtonProps extends HTMLAttributes<HTMLButtonElement> {
     children: ReactNode

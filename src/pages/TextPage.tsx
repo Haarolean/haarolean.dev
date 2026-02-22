@@ -17,9 +17,7 @@ export const TextPage: React.FC<PropsWithChildren<PageProps>> = ({
                 <main className="mx-auto flex h-full w-full flex-1 items-center justify-center">
                     <div className="flex w-full flex-col p-8 lg:mx-96 lg:p-0">
                         <h2 className="mb-1 text-4xl">{title}</h2>
-                        <div className="w-96 flex-1 bg-red-900">
-                            {children}
-                        </div>
+                        <div className="w-96 flex-1 bg-red-900">{children}</div>
                     </div>
                 </main>
                 <div className="flex-2 flex items-center justify-center">

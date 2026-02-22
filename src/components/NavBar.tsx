@@ -96,11 +96,6 @@ const List: React.CSSProperties = {
     // "@bp1": { justifyContent: "space-around" },
 }
 
-const Icon: React.CSSProperties = {
-    fontSize: "24px",
-    lineHeight: "32px",
-}
-
 // const ButtonLogo = {
 //     fontWeight: 700,
 //     fontSize: "32px",
