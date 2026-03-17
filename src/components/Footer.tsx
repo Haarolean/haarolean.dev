@@ -7,7 +7,7 @@ import { siLinkedin } from "simple-icons"
 export default function Footer() {
     const linkStyle =
         "flex items-center " +
-        "text-xs lg:text-lg " +
+        "text-xs lg:text-sm " +
         "m-1 lg:m-3 " +
         "p-1 lg:p-2 " +
         "lowercase text-neutral " +
