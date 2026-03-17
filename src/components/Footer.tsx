@@ -1,8 +1,14 @@
 import { siGithub } from "simple-icons"
 import { siInstagram } from "simple-icons"
 import { siTwitter } from "simple-icons"
-import { siDiscord } from "simple-icons"
 import { siLinkedin } from "simple-icons"
+import { Aperture } from "lucide-react"
+
+const iconStyle =
+    "inline-block " +
+    "h-6 w-6 " +
+    "fill-current text-neutral hover:text-primary " +
+    "lg:mr-2 lg:h-3 lg:w-3 lg:text-transparent lg:group-hover:text-primary"
 
 export default function Footer() {
     const linkStyle =
@@ -13,10 +19,6 @@ export default function Footer() {
         "lowercase text-neutral " +
         "hover:cursor-pointer hover:text-primary hover:link " +
         "group block"
-
-    const discord = () => {
-        alert("It's 'Haarolean' just like anywhere else, duh")
-    }
 
     return (
         <>
@@ -41,15 +43,6 @@ export default function Footer() {
                 </a>
                 <a
                     className={linkStyle}
-                    href="https://linkedin.com/in/haarolean/"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    <Icon path={siLinkedin.path} />
-                    <span className="hidden lg:block">linkedin</span>
-                </a>
-                <a
-                    className={linkStyle}
                     href="https://instagram.com/haarolean"
                     target="_blank"
                     rel="noreferrer"
@@ -57,9 +50,25 @@ export default function Footer() {
                     <Icon path={siInstagram.path} />
                     <span className="hidden lg:block">instagram</span>
                 </a>
-                <a className={linkStyle} onClick={discord}>
-                    <Icon path={siDiscord.path} />
-                    <span className="hidden lg:block">discord</span>
+                <a
+                    className={linkStyle}
+                    href="https://t.me/places_sometimes"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <Aperture
+                        className={`${iconStyle} !fill-none !stroke-current`}
+                    />
+                    <span className="hidden lg:block">photos</span>
+                </a>
+                <a
+                    className={linkStyle}
+                    href="https://linkedin.com/in/haarolean/"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <Icon path={siLinkedin.path} />
+                    <span className="hidden lg:block">linkedin</span>
                 </a>
             </footer>
         </>
@@ -68,13 +77,7 @@ export default function Footer() {
 
 function Icon(props: { path: string }) {
     return (
-        <svg
-            viewBox="0 0 24 24"
-            className="inline-block 
-            h-6 w-6 
-            fill-current text-neutral hover:text-primary
-            lg:mr-2 lg:h-3 lg:w-3 lg:text-transparent lg:group-hover:text-primary"
-        >
+        <svg viewBox="0 0 24 24" className={iconStyle}>
             <path d={props.path} />
         </svg>
     )
