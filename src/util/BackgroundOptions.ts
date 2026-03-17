@@ -552,7 +552,18 @@ const options: ISourceOptions = {
     },
     pauseOnBlur: true,
     pauseOnOutsideViewport: true,
-    responsive: [],
+    responsive: [
+        {
+            maxWidth: 768,
+            mode: "screen",
+            options: {
+                background: {
+                    size: "120%",
+                    position: "-50vw 88%",
+                },
+            },
+        },
+    ],
     smooth: false,
     style: {},
     themes: [],

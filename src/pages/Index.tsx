@@ -17,8 +17,8 @@ export default function Index() {
                             </h1>
                             <p>
                                 <strong className="font-medium leading-loose">
-                                    Digital nomad, software developer, engineer
-                                    and cat enthusiast
+                                    Software developer, engineer and cat
+                                    enthusiast
                                 </strong>
                             </p>
                             <p className="leading-loose text-neutral">
