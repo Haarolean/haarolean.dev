@@ -10,6 +10,9 @@ let conf = {
     ],
     theme: {
         extend: {
+            colors: {
+                nyan: "#043564",
+            },
             keyframes: {
                 "text-shimmer": {
                     from: { backgroundPosition: "0 0" },

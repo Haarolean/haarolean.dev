@@ -561,6 +561,14 @@ const options: ISourceOptions = {
                     size: "120%",
                     position: "-50vw 88%",
                 },
+                interactivity: {
+                    events: {
+                        onHover: {
+                            enable: true,
+                            mode: "repulse",
+                        },
+                    },
+                },
             },
         },
     ],

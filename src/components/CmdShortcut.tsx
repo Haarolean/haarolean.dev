@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react"
-import { useKBar } from "kbar"
-import KBarButton from "./KBarButton.tsx"
+import { CommandMenuButton } from "./cmdk/CommandMenu"
 import Kbd from "./Kbd.tsx"
 
 export default function ShortcutHome() {
-    const { query } = useKBar()
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
@@ -17,19 +15,19 @@ export default function ShortcutHome() {
 
         if (isMobile) {
             return (
-                <KBarButton onClick={query.toggle}>Tap to start →</KBarButton>
+                <CommandMenuButton>Tap for command palette →</CommandMenuButton>
             )
         } else if (isMac) {
             return (
-                <KBarButton onClick={query.toggle}>
-                    Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> to start →
-                </KBarButton>
+                <CommandMenuButton>
+                    Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> for command palette →
+                </CommandMenuButton>
             )
         } else {
             return (
-                <KBarButton onClick={query.toggle}>
-                    Press <Kbd>ctrl</Kbd> <Kbd>K</Kbd> to start →
-                </KBarButton>
+                <CommandMenuButton>
+                    Press <Kbd>ctrl</Kbd> <Kbd>K</Kbd> for command palette →
+                </CommandMenuButton>
             )
         }
     }

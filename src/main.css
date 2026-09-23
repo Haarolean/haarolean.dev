@@ -3,47 +3,84 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Neuzeit Grotesk Bold';
-  src: url("/fonts/NeuzeitGrotesk-Bold.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Neuzeit Grotesk Bold";
+    src: url("/fonts/NeuzeitGrotesk-Bold.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Biotif';
-  src: url("/fonts/Biotif-Bold.woff2") format("woff2");
-  font-weight: bold;
-  font-style: normal;
+    font-family: "Biotif";
+    src: url("/fonts/Biotif-Bold.woff2") format("woff2");
+    font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Biotif';
-  src: url("/fonts/Biotif-Book.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
+    font-family: "Biotif";
+    src: url("/fonts/Biotif-Book.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Biotif';
-  src: url("/fonts/Biotif-Regular.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Biotif";
+    src: url("/fonts/Biotif-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Biotif';
-  src: url("/fonts/Biotif-RegularItalic.woff2") format("woff2");
-  font-weight: normal;
-  font-style: italic;
+    font-family: "Biotif";
+    src: url("/fonts/Biotif-RegularItalic.woff2") format("woff2");
+    font-weight: normal;
+    font-style: italic;
 }
 
 @font-face {
-  font-family: 'Fira Code';
-  src: url("/fonts/FiraCode-Regular.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Fira Code";
+    src: url("/fonts/FiraCode-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+}
+
+body {
+    overscroll-behavior: none;
+    touch-action: manipulation;
+}
+
+.nav-container {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-container:after {
+    content: "";
+    position: absolute;
+    margin: 0px auto;
+    top: 18px;
+    left: 0px;
+    right: 0px;
+    height: 1px;
+    width: 20px;
+    background: rgb(255, 255, 255);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.navbar-link {
+    text-decoration: none;
+    transition: opacity 0.2s ease-in-out;
 }
