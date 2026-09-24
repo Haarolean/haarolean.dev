@@ -44,9 +44,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("/fonts/PressStart2P-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
 html {
     scroll-behavior: smooth;
     overscroll-behavior: none;
+}
+
+:root {
+    background-color: #043564;
 }
 
 body {
@@ -83,4 +94,17 @@ body {
 .navbar-link {
     text-decoration: none;
     transition: opacity 0.2s ease-in-out;
+}
+
+.index-page {
+    transition: opacity 0.5s ease-in-out;
+}
+
+#tsparticles canvas {
+    transition: background-color 0.5s ease-in-out;
+}
+
+body.laser-mode .index-page {
+    opacity: 0;
+    pointer-events: none;
 }

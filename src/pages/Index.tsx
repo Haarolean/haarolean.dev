@@ -1,4 +1,5 @@
 import NyanBackground from "../components/NyanBackground.tsx"
+import NyanSecret from "../components/NyanSecret.tsx"
 import Footer from "../components/Footer.tsx"
 import LiveClock from "../components/LiveClock.tsx"
 import React from "react"
@@ -9,7 +10,8 @@ export default function Index() {
     return (
         <>
             <NyanBackground />
-            <div className="flex h-screen min-h-screen flex-col">
+            <NyanSecret />
+            <div className="index-page flex h-screen min-h-screen flex-col">
                 <NavBar />
                 <main className="mx-auto flex w-full flex-1 items-center justify-center overflow-hidden">
                     <div className="flex w-full p-8 lg:mx-96 lg:p-0">

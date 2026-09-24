@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Particles, { initParticlesEngine } from "@tsparticles/react"
 import { loadFull } from "tsparticles"
 import BackgroundOptions from "util/BackgroundOptions.ts"
+import { setGameContainer } from "./NyanGame.ts"
 
 export default function NyanBackground() {
     const [particlesInitialized, setParticlesInitialized] = useState(false)
@@ -17,7 +18,13 @@ export default function NyanBackground() {
     if (particlesInitialized) {
         return (
             <div className="fixed -z-10">
-                <Particles id="tsparticles" options={BackgroundOptions} />
+                <Particles
+                    id="tsparticles"
+                    options={BackgroundOptions}
+                    particlesLoaded={async (c) => {
+                        if (c) setGameContainer(c)
+                    }}
+                />
             </div>
         )
     }

@@ -59,6 +59,65 @@ const options: ISourceOptions = {
             },
         },
         modes: {
+            emitters: {
+                rate: {
+                    quantity: 15,
+                    delay: 0.1,
+                },
+                life: {
+                    // wait past the click-repulse window (see applyGameState's
+                    // repulse.duration) or the 1/d² kick vaporizes the burst's
+                    // center; delay is divided by reduceFactor
+                    wait: true,
+                    delay: 0.4,
+                    count: 1,
+                    duration: 0.25,
+                },
+                size: {
+                    width: 100,
+                    height: 100,
+                    mode: "precise",
+                },
+                particles: {
+                    color: {
+                        value: ["#ff3b30", "#ff9500", "#ffcc00"],
+                    },
+                    shape: {
+                        type: "circle",
+                    },
+                    opacity: {
+                        value: { min: 0, max: 1 },
+                        animation: {
+                            enable: true,
+                            speed: 0.8,
+                            startValue: "max",
+                            destroy: "min",
+                            sync: true,
+                        },
+                    },
+                    size: {
+                        value: { min: 2, max: 5 },
+                    },
+                    move: {
+                        direction: "none",
+                        straight: false,
+                        speed: { min: 4, max: 20 },
+                        // high decay brakes the click-repulse kick (reach
+                        // (distance/6)³ ≈ 190px covers the whole burst area) so
+                        // sparks stall into a ring instead of leaving the canvas
+                        decay: 0.15,
+                        outModes: "destroy",
+                    },
+                    life: {
+                        count: 1,
+                        // sync: true — the life updater multiplies non-sync
+                        // durations by a second random 0-1, collapsing the range.
+                        // must outlast the opacity fade (÷ reduceFactor in game
+                        // mode) so the fade is what removes sparks, not a cliff
+                        duration: { value: { min: 2.5, max: 3.5 }, sync: true },
+                    },
+                },
+            },
             trail: {
                 delay: 1,
                 pauseOnStop: false,
@@ -153,6 +212,9 @@ const options: ISourceOptions = {
             },
         },
     },
+    // presence (even empty) activates the emitters plugin at load; without it
+    // runtime addEmitter doesn't exist
+    emitters: [],
     manualParticles: [],
     particles: {
         bounce: {
