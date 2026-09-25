@@ -33,7 +33,8 @@
             "error",
             {
                 "code": 120,
-                "ignorePattern": "className"
+                "ignorePattern": "className",
+                "ignoreStrings": true
             }
         ],
         "react/react-in-jsx-scope": "off",
