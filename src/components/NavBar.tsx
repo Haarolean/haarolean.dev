@@ -33,6 +33,9 @@ export default function NavBar() {
                                 )}
                                 onHoverStart={() => setHovered(name)}
                                 onHoverEnd={() => setHovered("")}
+                                onTapStart={() => setHovered(name)}
+                                onTap={() => setHovered("")}
+                                onTapCancel={() => setHovered("")}
                             >
                                 {hovered === name && (
                                     <motion.span
