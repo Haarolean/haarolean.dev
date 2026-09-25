@@ -15,8 +15,44 @@ type EmitterContainer = Container & {
 let container: EmitterContainer | undefined
 let gameOn = false
 
-const music = new Audio("/nyan.mp3")
-music.loop = true
+// looping an mp3 through <audio loop> has an audible seam; buffer sources don't
+let audioCtx: AudioContext | undefined
+let musicLoad: Promise<AudioBuffer> | undefined
+let musicSource: AudioBufferSourceNode | undefined
+
+const playMusic = () => {
+    // ios mutes Web Audio under the ring/silent switch unless the session is
+    // declared playback (safari 16.4+); <audio> elements were exempt
+    const nav = navigator as Navigator & { audioSession?: { type: string } }
+    if (nav.audioSession) nav.audioSession.type = "playback"
+    const ctx = (audioCtx ??= new AudioContext())
+    void ctx.resume().catch(() => undefined)
+    if (musicSource) return
+    musicLoad ??= fetch("/nyan.mp3")
+        .then((r) => r.arrayBuffer())
+        .then((b) => ctx.decodeAudioData(b))
+    void musicLoad
+        .then((buffer) => {
+            if (!gameOn || musicSource) return
+            const gain = ctx.createGain()
+            gain.gain.value = 0.3
+            gain.connect(ctx.destination)
+            const src = ctx.createBufferSource()
+            src.buffer = buffer
+            src.loop = true
+            src.connect(gain)
+            src.start()
+            musicSource = src
+        })
+        .catch(() => {
+            musicLoad = undefined
+        })
+}
+
+const stopMusic = () => {
+    musicSource?.stop()
+    musicSource = undefined
+}
 
 const applyGameState = () => {
     if (!container) return
@@ -402,7 +438,7 @@ export const startInvaders = (effects: Fx) => {
     if (spawnTimer) return
     gameOn = true
     applyGameState()
-    void music.play().catch(() => undefined)
+    playMusic()
     score = 0
     shoopSpawned = false
     scoreEl = document.createElement("div")
@@ -436,8 +472,7 @@ export const startInvaders = (effects: Fx) => {
 export const stopInvaders = () => {
     gameOn = false
     applyGameState()
-    music.pause()
-    music.currentTime = 0
+    stopMusic()
     if (spawnTimer) clearTimeout(spawnTimer)
     spawnTimer = undefined
     if (invaderRaf) cancelAnimationFrame(invaderRaf)
@@ -516,7 +551,7 @@ const fireBeams = (x: number, y: number) => {
 }
 
 export const shootInvader = (x: number, y: number) => {
-    if (music.paused) void music.play().catch(() => undefined)
+    playMusic()
     fireBeams(x, y)
     const pad = 10
     // rects can overlap (armada rows, grunt clusters): hit the nearest center
