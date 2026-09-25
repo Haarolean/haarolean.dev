@@ -20,7 +20,7 @@ export default function NavBar() {
             >
                 h
             </Link>
-            <nav className="order-2 flex-1 basis-full overflow-x-auto text-center">
+            <nav className="order-2 flex-1 basis-full text-center">
                 <ul className="relative top-[5px] inline-flex">
                     {pages.map(({ name, href }) => {
                         const external = href.startsWith("http")
