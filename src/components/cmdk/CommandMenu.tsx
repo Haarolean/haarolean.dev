@@ -60,6 +60,12 @@ export const CommandMenuProvider = ({ children }: PropsWithChildren) => {
             perform: () => navigate("/projects"),
         },
         {
+            name: "Uses",
+            shortcut: "U",
+            keywords: "uses tools gear apps software hardware",
+            perform: () => navigate("/uses"),
+        },
+        {
             name: "CV",
             shortcut: "C",
             keywords: "cv resume",

@@ -5,6 +5,7 @@ import clsx from "clsx"
 
 const pages = [
     { name: "Projects", href: "/projects" },
+    { name: "Uses", href: "/uses" },
     { name: "CV", href: "https://cv.haarolean.dev" },
 ]
 
