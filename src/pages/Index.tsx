@@ -32,8 +32,10 @@ export default function Index() {
                                 <span className="flex items-baseline gap-1">
                                     📍
                                     <p
-                                        className="tooltip tooltip-bottom
-                                         transition hover:cursor-help hover:opacity-70"
+                                        className="tooltip tooltip-bottom transition
+                                         hover:cursor-help hover:opacity-70
+                                         max-sm:before:left-0 max-sm:before:max-w-[calc(100vw-4rem)]
+                                         max-sm:before:translate-x-0"
                                         data-tip="Today's location, tomorrow's memory. Updated daily."
                                     >
                                         {import.meta.env.VITE_CURRENT_LOCATION}
