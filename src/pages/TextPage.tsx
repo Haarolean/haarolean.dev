@@ -7,13 +7,13 @@ export const TextPage = ({
     children,
 }: PropsWithChildren<{ title: string }>) => {
     return (
-        <div className="flex min-h-screen flex-col bg-nyan">
+        <div className="flex min-h-screen flex-col">
             <NavBar />
-            <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-8 pt-24">
+            <main className="mx-auto w-full max-w-4xl flex-1 px-4 pb-8 pt-24">
                 <h1 className="mb-6 w-fit bg-gradient-to-r from-secondary to-primary bg-clip-text font-heading text-5xl text-transparent">
                     {title}
                 </h1>
-                <div className="rounded-xl bg-base-content p-8 leading-relaxed text-nyan shadow-lg md:p-12">
+                <div className="rounded-xl bg-paper p-8 leading-relaxed text-nyan shadow-lg md:p-12">
                     {children}
                 </div>
             </main>

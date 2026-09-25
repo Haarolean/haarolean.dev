@@ -12,6 +12,7 @@ let conf = {
         extend: {
             colors: {
                 nyan: "#043564",
+                paper: "#e7e7e1",
             },
             keyframes: {
                 "text-shimmer": {
