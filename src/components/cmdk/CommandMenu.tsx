@@ -93,10 +93,10 @@ export const CommandMenuProvider = ({ children }: PropsWithChildren) => {
                     onClick={() => setOpen(false)}
                 />
                 <div className="fixed left-1/2 top-[14vh] w-full max-w-[600px] -translate-x-1/2">
-                    <div className="overflow-hidden rounded-lg bg-base-100/85 text-primary shadow-lg">
+                    <div className="overflow-hidden rounded-lg bg-base-100/85 text-base-content shadow-lg">
                         <Command.Input
                             placeholder="Type a command or search..."
-                            className="box-border w-full border-none bg-base-100/10 px-4 py-3 text-base text-primary outline-none placeholder:text-primary/50"
+                            className="box-border w-full border-none bg-base-100/10 px-4 py-3 text-base text-base-content outline-none placeholder:text-base-content/40"
                         />
                         <Command.List className="max-h-[300px] overflow-y-auto">
                             <Command.Empty className="px-4 py-3 text-sm opacity-50">
@@ -115,7 +115,7 @@ export const CommandMenuProvider = ({ children }: PropsWithChildren) => {
                                             action.perform()
                                             setOpen(false)
                                         }}
-                                        className="flex cursor-pointer items-center justify-between border-l-2 border-transparent px-4 py-3 text-base data-[selected=true]:border-[#f8f8f2] data-[selected=true]:bg-primary/20"
+                                        className="flex cursor-pointer items-center justify-between border-l-2 border-transparent px-4 py-3 text-base data-[selected=true]:border-primary data-[selected=true]:bg-primary/10 data-[selected=true]:text-primary"
                                     >
                                         <span>{action.name}</span>
                                         <kbd
