@@ -3,7 +3,8 @@ import react from "@vitejs/plugin-react"
 import viteTsconfigPaths from "vite-tsconfig-paths"
 
 export default defineConfig({
-  base: "",
+  // absolute, not relative: routes are also served from subpaths like /uses/
+  base: "/",
   plugins: [react(), viteTsconfigPaths()],
   server: {
     // this ensures that the browser opens upon server start
