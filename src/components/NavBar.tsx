@@ -25,12 +25,14 @@ export default function NavBar() {
                 <ul className="relative top-[5px] inline-flex">
                     {pages.map(({ name, href }) => {
                         const external = href.startsWith("http")
+                        const active = location.pathname == href
                         const label = (
                             <motion.span
                                 className={clsx(
-                                    location.pathname == href &&
-                                        "text-primary after:opacity-100",
-                                    "nav-container text-neutral hover:text-primary"
+                                    active
+                                        ? "text-primary after:opacity-100"
+                                        : "hover:text-base-content",
+                                    "nav-container text-neutral"
                                 )}
                                 onHoverStart={() => setHovered(name)}
                                 onHoverEnd={() => setHovered("")}
