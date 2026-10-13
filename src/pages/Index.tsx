@@ -5,6 +5,7 @@ import LiveClock from "../components/LiveClock.tsx"
 import React from "react"
 import NavBar from "../components/NavBar.tsx"
 import ShortcutHome from "../components/CmdShortcut.tsx"
+import location from "../location.json"
 
 export default function Index() {
     return (
@@ -38,16 +39,20 @@ export default function Index() {
                                          max-sm:before:translate-x-0"
                                         data-tip="Today's location, tomorrow's memory. Updated daily."
                                     >
-                                        {import.meta.env.VITE_CURRENT_LOCATION}
+                                        {location.current}
                                     </p>
                                 </span>
                                 <span className="text-neutral">·</span>
-                                <LiveClock
-                                    timezone={
-                                        import.meta.env.VITE_CURRENT_TIMEZONE
-                                    }
-                                />
+                                <LiveClock timezone={location.timezone} />
                             </span>
+                            {location.next && (
+                                <p className="text-sm text-neutral">
+                                    → {location.next}{" "}
+                                    <span className="font-code">
+                                        {relativeDay(location.nextDate)}
+                                    </span>
+                                </p>
+                            )}
                             <div className="mt-8">
                                 <ShortcutHome />
                             </div>
@@ -60,4 +65,14 @@ export default function Index() {
             </div>
         </>
     )
+}
+
+function relativeDay(date: string) {
+    const start = new Date(`${date}T00:00`).getTime()
+    const today = new Date().setHours(0, 0, 0, 0)
+    const days = Math.round((start - today) / 86_400_000)
+    return new Intl.RelativeTimeFormat("en", {
+        style: "narrow",
+        numeric: "auto",
+    }).format(days, "day")
 }
